@@ -23,6 +23,7 @@ namespace AplicatieMeditatii.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, AplicatieMeditatii.Migrations.Configuration>("DefaultConnection"));
         }
 
         public virtual DbSet<Course> Courses { get; set; }
