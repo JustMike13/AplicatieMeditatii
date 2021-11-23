@@ -52,7 +52,59 @@ namespace AplicatieMeditatii.Controllers
             }
         }
 
+        public ActionResult Show(int id)
+        {
+            Course course = db.Courses.Find(id);
+            course.Contents = GetAllCourseContents(id);
+            var selectList = new List<SelectListItem>();
+            return View(course);
+        }
 
+        public ActionResult Edit(int id)
+        {
+            Course course = db.Courses.Find(id);
+            course.Subjects = GetAllSubjects();
+            return View(course);
+        }
+
+        [HttpPut]
+        public ActionResult Edit(Course newCourse)
+        {
+            var id = newCourse.CourseId;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Course course = db.Courses.Find(id);
+                    if (TryUpdateModel(course))
+                    {
+                        course.Title = newCourse.Title;
+                        course.SubjectId = newCourse.SubjectId;
+                        db.SaveChanges();
+                        ViewBag.message = "Lectia a fost modificata";
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.message = "Lectia nu a fost modificata";
+                        newCourse.Subjects = GetAllSubjects();
+                        return View(newCourse);
+                    }
+                }
+                else
+                {
+                    ViewBag.message = "Lectia nu a fost modificata";
+                    newCourse.Subjects = GetAllSubjects();
+                    return View(newCourse);
+                }
+            }
+            catch(Exception e)
+            {
+                ViewBag.message = "Lectia nu a fost modificata";
+                newCourse.Subjects = GetAllSubjects();
+                return View(newCourse);
+            }
+        }
 
         [NonAction]
         public IEnumerable<SelectListItem> GetAllSubjects()
@@ -72,6 +124,16 @@ namespace AplicatieMeditatii.Controllers
                 });
             }
             return selectList;
+        }
+
+        [NonAction]
+        public IEnumerable<CourseContent> GetAllCourseContents(int id)
+        {
+            var contents = db.CourseContents
+                .Where(p => p.Courseid == id)
+                .OrderBy(p => p.Index);
+
+            return contents;
         }
     }
 }

@@ -1,0 +1,19 @@
+﻿@model  AplicatieMeditatii.Models.Course
+@{
+    ViewBag.Title = "Show";
+}
+
+
+<h1>@Model.Title</h1>
+
+@foreach (var content in Model.CourseContents)
+{
+    if (content.Type == "image") 
+    {
+        <img src=content.ImagePath>
+    }
+    else if(content.Type == "text")
+    {
+        <p>@content.Text</p>
+    }
+}
