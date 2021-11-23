@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    foreach (var course in ViewBag.cursuri)
+            {
+                <div>
+                    <h3>@course.Title</h3>
+                    @foreach( var mat in ViewBag.materii)
+                    {
+                        if(mat.Value == course.SubjectId)
+                    {
+                        <h5>@mat.Text</h5>
+                    }
+                    }
+                    
+                </div>
+                <br/>
+                <hr/>
+                <br/>
+            }  
+}
+
+@Html.ActionLink("Adauga o lectie noua", "AddCourse", "Course")
+
