@@ -17,7 +17,7 @@ namespace AplicatieMeditatii.Models
         // shows the order of the contents
 
         public string Type { get; set; }
-        // text or image
+        // 'text' or 'image'
 
         public string Text { get; set; }
 

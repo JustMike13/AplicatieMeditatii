@@ -21,5 +21,7 @@ namespace AplicatieMeditatii.Models
         public virtual ICollection<CourseContent> CourseContents { get; set; }
 
         public IEnumerable<SelectListItem> Subjects { get; set; }
+
+        public IEnumerable<CourseContent> Contents { get; set; }
     }
 }

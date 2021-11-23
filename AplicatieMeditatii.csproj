@@ -217,6 +217,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Course\AddCourse.cshtml" />
+    <Content Include="Views\Course\Show.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
     <None Include="Views\Home\Will_be_added.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

@@ -1,0 +1,22 @@
+﻿@model AplicatieMeditatii.Models.Course
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@ViewBag.message
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Course"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.HiddenFor(m => m.CourseId)
+
+    @Html.Label("title", "Titlu lectie  ", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.Title)
+
+    @Html.DropDownListFor(m => m.SubjectId,
+        new SelectList(Model.Subjects, "Value", "Text"), "Selectati materia", new { @class = "form-control" })
+    @Html.ValidationMessage("SubjectId", null, new { @class = "text-danger" })
+
+    <button class="btn btn-sm btn-success" type="submit">Modifică lectia</button>
+}
