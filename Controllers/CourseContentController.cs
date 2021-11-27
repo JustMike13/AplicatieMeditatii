@@ -116,20 +116,7 @@ namespace AplicatieMeditatii.Controllers
         {
             CourseContent content = db.CourseContents.Find(id);
             var courseId = content.Courseid;
-            var index = content.Index;
-            var otherContents = db.CourseContents.Where(p => p.Courseid == courseId);
-            foreach(var oc in otherContents)
-            {
-                if(oc.Index > index)
-                {
-                    if (TryUpdateModel(oc))
-                    {
-                        oc.Index = oc.Index - 1;
-                        db.SaveChanges();
-                    }
-                }
-                
-            }
+            
 
             db.CourseContents.Remove(content);
             db.SaveChanges();

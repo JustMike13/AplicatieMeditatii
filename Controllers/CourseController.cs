@@ -55,8 +55,12 @@ namespace AplicatieMeditatii.Controllers
         public ActionResult Show(int id)
         {
             Course course = db.Courses.Find(id);
-            course.Contents = GetAllCourseContents(id);
-            var selectList = new List<SelectListItem>();
+            //var contents = GetAllCourseContents(id);
+            //var ordered = new List<SelectListItem>();
+
+            course.Contents = db.CourseContents
+                .Where(p => p.Courseid == id)
+                .OrderBy(p => p.Index);
             return View(course);
         }
 

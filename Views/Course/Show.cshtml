@@ -6,7 +6,7 @@
 
 <h1>@Model.Title</h1>
 
-@foreach (var content in Model.CourseContents)
+@foreach (var content in Model.CourseContents.OrderBy(con => con.Index))
 {
     if (content.Type == "image")
     {
