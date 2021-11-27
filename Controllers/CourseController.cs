@@ -106,6 +106,29 @@ namespace AplicatieMeditatii.Controllers
             }
         }
 
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            Course course = db.Courses.Find(id);
+
+            var contents = db.CourseContents
+                .Where(p => p.Courseid == id)
+                .OrderBy(p => p.Index);
+            foreach(var con in contents)
+            {
+                db.CourseContents.Remove(con);
+            }
+
+            db.Courses.Remove(course);
+            db.SaveChanges();
+            TempData["message"] = "Lectie ștearsa cu succes.";
+
+            var Materii = GetAllSubjects();
+            ViewBag.materii = Materii;
+            return RedirectToAction("Index");
+        }
+
+
         [NonAction]
         public IEnumerable<SelectListItem> GetAllSubjects()
         {
