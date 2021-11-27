@@ -1,0 +1,26 @@
+﻿@model AplicatieMeditatii.Models.Subject
+@{
+    ViewBag.Title = "New Subject";
+}
+
+<h2>New Subject</h2>
+
+@using (Html.BeginForm("New", "Subjects", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <br />
+    @Html.Label("Title", "Titlu", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.Title)
+    @Html.ValidationMessage("Title", null, new { @class = "text-danger" })
+    <br />
+
+    <br />
+    @Html.Label("Year", "An predare", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.Year)
+    @Html.ValidationMessage("Year", null, new { @class = "text-danger" })
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <button type="submit">Adaugă lectia</button>
+}

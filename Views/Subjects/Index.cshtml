@@ -1,0 +1,22 @@
+﻿@model AplicatieMeditatii.Models.Subject
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var mat in @ViewBag.materii)
+{
+    <h3>@mat.Title @mat.Year</h3>
+    <a class="pull-left btn-sm btn btn-info" href="/Subjects/Edit/@mat.Subjectid">Editeaza</a>
+    <form method="post" action="/Subjects/Delete/@mat.Subjectid">
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <button class="pull-right btn btn-danger" type="submit">Șterge</button>
+    </form>
+    <br />
+    <hr />
+    <br />
+}
+
+
+<a class="pull-left btn-sm btn btn-info" href="/Subjects/New">Adauga materie</a>
