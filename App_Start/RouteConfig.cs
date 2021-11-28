@@ -14,6 +14,12 @@ namespace AplicatieMeditatii
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ProblemSolve",
+                url: "{controller}/{action}/{id1}/{id2}",
+                defaults: new { controller = "Problem", action = "Solve", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

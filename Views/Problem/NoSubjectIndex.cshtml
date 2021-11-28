@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "NoSubjectIndex";
+}
+
+<h2>NoSubjectIndex</h2>
+<h2>Alegeti o materie:</h2>
+@foreach (var mat in ViewBag.Materii)
+{
+<div style="width:500px; min-height: 50px">
+    <h3 class="pull-left">@mat.Text</h3>
+    <a class="pull-right btn-sm btn btn-success" href="/Problem/Index/@mat.Value">Afiseaza problemele</a>
+</div>
+    <br /><br /><br />
+}

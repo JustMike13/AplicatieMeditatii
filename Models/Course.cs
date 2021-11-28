@@ -16,7 +16,7 @@ namespace AplicatieMeditatii.Models
         public string Title { get; set; }
 
 
-        public string SubjectId { get; set; }
+        public int SubjectId { get; set; }
 
         public virtual ICollection<CourseContent> CourseContents { get; set; }
 
