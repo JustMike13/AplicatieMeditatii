@@ -69,7 +69,55 @@ namespace AplicatieMeditatii.Controllers
             return View(problem);
         }
 
+        public ActionResult Edit(int id)
+        {
+            Problem problema = db.Problems.Find(id);
+            problema.Subjects = GetAllSubjects();
+            return View(problema);
+        }
 
+        [HttpPut]
+        public ActionResult Edit(Problem problemaNoua)
+        {
+            var id = problemaNoua.ProblemId;
+            problemaNoua.Subjects = GetAllSubjects();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Problem problema = db.Problems.Find(id);
+                    if (TryUpdateModel(problema))
+                    {
+                        problema.Title = problemaNoua.Title;
+                        problema.Question = problemaNoua.Question;
+                        problema.a = problemaNoua.a;
+                        problema.b = problemaNoua.b;
+                        problema.c = problemaNoua.c;
+                        problema.d = problemaNoua.d;
+                        problema.Correct = problemaNoua.Correct;
+                        problema.SubjectId = problemaNoua.SubjectId;
+                        db.SaveChanges();
+                        ViewBag.message = "Problema a fost modificata";
+                        return RedirectToAction("Show/"+id);
+                    }
+                    else
+                    {
+                        ViewBag.message = "Problema nu a fost modificata 1 ";
+                        return View(problemaNoua);
+                    }
+                }
+                else
+                {
+                    ViewBag.message = "Problema nu a fost modificata 2 ";
+                    return View(problemaNoua);
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.message = "Problema nu a fost modificata 3 ";
+                return View(problemaNoua);
+            }
+        }
 
 
 

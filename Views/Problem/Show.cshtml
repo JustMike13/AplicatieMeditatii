@@ -30,3 +30,10 @@
         <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.d">d) @Model.d</a>
     }
 </p>
+<br />
+<br />
+<a class="pull-left btn-sm btn btn-info" href="/Problem/Edit/@Model.ProblemId">Editeaza problema</a>
+<form method="post" action="/Problem/Delete/@Model.ProblemId">
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="pull-right btn btn-danger" type="submit">Șterge problema</button>
+</form>

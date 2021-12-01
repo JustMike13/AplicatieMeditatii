@@ -268,6 +268,7 @@
     <Content Include="Views\Problem\NoSubjectIndex.cshtml" />
     <Content Include="Views\Problem\New.cshtml" />
     <Content Include="Views\Problem\Show.cshtml" />
+    <Content Include="Views\Problem\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111222314541_Init.resx">

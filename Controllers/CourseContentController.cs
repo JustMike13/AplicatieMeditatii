@@ -87,8 +87,8 @@ namespace AplicatieMeditatii.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    string fileName = uploadedImage.FileName;
-                    string fileExtension = Path.GetExtension(fileName);
+                    string fileExtension = Path.GetExtension(uploadedImage.FileName);
+                    string fileName = "Image_" + content.Id + fileExtension;
                     string path = "~/images/Course" + content.Courseid + "/";
 
                     content.ImagePath = Path.Combine(path.Remove(0, 1), fileName);

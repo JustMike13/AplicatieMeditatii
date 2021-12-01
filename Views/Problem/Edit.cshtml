@@ -1,0 +1,41 @@
+﻿@model AplicatieMeditatii.Models.Problem
+@{
+    ViewBag.Title = "Edit Problem";
+}
+
+<h2>Edit</h2>
+@ViewBag.message
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Problem"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.HiddenFor(m => m.ProblemId)
+    @Html.HiddenFor(m => m.Answer)
+
+    @Html.Label("Title", "Titlu ", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.Title)
+    <br />
+    @Html.Label("Question", "Intrebare", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.Question)
+    <br />
+    @Html.Label("a", "a)", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.a)
+    <br />
+    @Html.Label("b", "b)", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.b)
+    <br />
+    @Html.Label("c", "c)", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.c)
+    <br />
+    @Html.Label("d", "d)", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.d)
+    <br />
+    @Html.Label("Correct", "Raspunsul corect:", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.Correct)
+    <br />
+    @Html.DropDownListFor(m => m.SubjectId,
+        new SelectList(Model.Subjects, "Value", "Text"), "Selectati materia", new { @class = "form-control" })
+    @Html.ValidationMessage("SubjectId", null, new { @class = "text-danger" })
+
+    <button class="btn btn-sm btn-success" type="submit">Modifică Problema</button>
+}
