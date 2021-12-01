@@ -119,9 +119,20 @@ namespace AplicatieMeditatii.Controllers
             }
         }
 
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            Problem problema = db.Problems.Find(id);
+
+            db.Problems.Remove(problema);
+            db.SaveChanges();
+            TempData["message"] = "Problema ștearsa cu succes.";
+            return RedirectToAction("NoSubjectIndex");
+        }
 
 
-        public ActionResult Solve(int id1, int id2)
+
+        public ActionResult Solve(int id1, string id2)
         {
             Problem problem = db.Problems.Find(id1);
 
