@@ -11,7 +11,7 @@
 
         @foreach (var mat in @ViewBag.materii)
         {
-            if (@mat.Value == @course.SubjectId)
+            if (@mat.Value == @course.SubjectId.ToString())
         {
         <h5>@mat.Text</h5>
         }

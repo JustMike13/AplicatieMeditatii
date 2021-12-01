@@ -1,6 +1,6 @@
 ﻿@model AplicatieMeditatii.Models.CourseContent
 @{
-    ViewBag.Title = "New text";
+    ViewBag.Title = "New image";
     var tempval = TempData["message"];
 }
 
@@ -8,7 +8,7 @@
 
 
 
-@using (Html.BeginForm("NewText", "CourseContent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("NewImage", "CourseContent", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <br />
     @Html.HiddenFor(m => m.ImagePath)
@@ -16,12 +16,13 @@
     @Html.HiddenFor(m => m.Courseid)
     @Html.HiddenFor(m => m.Index)
     @Html.HiddenFor(m => m.Type)
-    @Html.Label("Text", "Text", new { htmlAttributes = new { @class = "form-control" } })
-    @Html.EditorFor(m => m.Text)
-    @Html.ValidationMessage("Text", null, new { @class = "text-danger" })
+    @Html.HiddenFor(m => m.Text)
+    <label>Alegeti o imagine:</label>
+    <input type="file" name="uploadedImage" />
+    <br />
     <br />
 
-    
+
     <br />
     <br />
     <br />

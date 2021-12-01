@@ -10,13 +10,23 @@
 <h2> @Model.Question</h2>
 
 <p>
+    @if (@Model.Answer == "Correct")
+    {
+        <h2>Correct</h2>
+    }
+    @if (@Model.Answer == "Gresit")
+    {
+        <h2>Gresit</h2>
+    }
+
     <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.a">a) @Model.a</a>
     <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.b">b) @Model.b</a>
-    @if(@Model.c != null){
-    <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.c">c) @Model.c</a>
-    }
-    @if(@Model.d != null)
+    @if (@Model.c != null)
     {
-    <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.d">d) @Model.d</a>
+        <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.c">c) @Model.c</a>
+    }
+    @if (@Model.d != null)
+    {
+        <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.d">d) @Model.d</a>
     }
 </p>

@@ -81,6 +81,11 @@ namespace AplicatieMeditatii.Controllers
             {
                 problem.Answer = "Correct";
             }
+            else
+            {
+                problem.Answer = "Gresit";
+                problem.Correct = null;
+            }
 
             return View("./Show", problem);
         }

@@ -225,6 +225,7 @@
     <Content Include="Views\Course\Edit.cshtml" />
     <Content Include="Views\CourseContent\NewText.cshtml" />
     <Content Include="Views\CourseContent\Edit.cshtml" />
+    <Content Include="Views\CourseContent\NewImage.cshtml" />
     <None Include="Views\Home\Will_be_added.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

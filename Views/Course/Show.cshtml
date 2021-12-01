@@ -10,7 +10,7 @@
 {
     if (content.Type == "image")
     {
-        <img src=content.ImagePath>
+        <img src="~" + @content.ImagePath.ToString()>
     }
     else if (content.Type == "text")
     {
