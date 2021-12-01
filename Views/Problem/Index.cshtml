@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var prob in ViewBag.probleme)
+{
+<div style="width:200px; height: 30px">
+    <h3 class="pull-left">@prob.Title</h3>
+    <a class="pull-right btn-sm btn btn-info" href="/Problem/Show/@prob.ProblemId">Deschide</a>
+</div>
+<br />
+<br />
+
+}
+
+
+<a class="pull-left btn-sm btn btn-info" href="/Problem/New">Adauga problema</a>

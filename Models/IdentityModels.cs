@@ -29,6 +29,7 @@ namespace AplicatieMeditatii.Models
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<CourseContent> CourseContents { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<Problem> Problems { get; set; }
 
         public static ApplicationDbContext Create()
         {

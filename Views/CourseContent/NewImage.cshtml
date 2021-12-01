@@ -1,0 +1,32 @@
+﻿@model AplicatieMeditatii.Models.CourseContent
+@{
+    ViewBag.Title = "New image";
+    var tempval = TempData["message"];
+}
+
+<h2>New text   @tempval</h2>
+
+
+
+@using (Html.BeginForm("NewImage", "CourseContent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <br />
+    @Html.HiddenFor(m => m.ImagePath)
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Courseid)
+    @Html.HiddenFor(m => m.Index)
+    @Html.HiddenFor(m => m.Type)
+    @Html.HiddenFor(m => m.Text)
+    <label>Alegeti o imagine:</label>
+    <input type="file" name="uploadedImage" />
+    <br />
+    <br />
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <button class="btn btn-success" type="submit">Adaugă lectia</button>
+}

@@ -55,8 +55,12 @@ namespace AplicatieMeditatii.Controllers
         public ActionResult Show(int id)
         {
             Course course = db.Courses.Find(id);
-            course.Contents = GetAllCourseContents(id);
-            var selectList = new List<SelectListItem>();
+            //var contents = GetAllCourseContents(id);
+            //var ordered = new List<SelectListItem>();
+
+            course.Contents = db.CourseContents
+                .Where(p => p.Courseid == id)
+                .OrderBy(p => p.Index);
             return View(course);
         }
 
@@ -105,6 +109,29 @@ namespace AplicatieMeditatii.Controllers
                 return View(newCourse);
             }
         }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            Course course = db.Courses.Find(id);
+
+            var contents = db.CourseContents
+                .Where(p => p.Courseid == id)
+                .OrderBy(p => p.Index);
+            foreach(var con in contents)
+            {
+                db.CourseContents.Remove(con);
+            }
+
+            db.Courses.Remove(course);
+            db.SaveChanges();
+            TempData["message"] = "Lectie ștearsa cu succes.";
+
+            var Materii = GetAllSubjects();
+            ViewBag.materii = Materii;
+            return RedirectToAction("Index");
+        }
+
 
         [NonAction]
         public IEnumerable<SelectListItem> GetAllSubjects()

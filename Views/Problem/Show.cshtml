@@ -1,0 +1,39 @@
+﻿@model AplicatieMeditatii.Models.Problem
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+
+<h3> @Model.Title</h3>
+<h2> @Model.Question</h2>
+
+<p>
+    @if (@Model.Answer == "Correct")
+    {
+        <h2>Correct</h2>
+    }
+    @if (@Model.Answer == "Gresit")
+    {
+        <h2>Gresit</h2>
+    }
+
+    <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.a">a) @Model.a</a>
+    <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.b">b) @Model.b</a>
+    @if (@Model.c != null)
+    {
+        <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.c">c) @Model.c</a>
+    }
+    @if (@Model.d != null)
+    {
+        <a class="pull-left btn-sm btn btn-success" href="/Problem/Solve/@Model.ProblemId/@Model.d">d) @Model.d</a>
+    }
+</p>
+<br />
+<br />
+<a class="pull-left btn-sm btn btn-info" href="/Problem/Edit/@Model.ProblemId">Editeaza problema</a>
+<form method="post" action="/Problem/Delete/@Model.ProblemId">
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="pull-right btn btn-danger" type="submit">Șterge problema</button>
+</form>

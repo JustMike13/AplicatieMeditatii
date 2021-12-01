@@ -1,0 +1,58 @@
+﻿@model AplicatieMeditatii.Models.Problem
+@{
+    ViewBag.Title = "New";
+}
+@ViewBag.message
+<h2>New Problem</h2>
+
+@using (Html.BeginForm("New", "Problem", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <br />
+    @Html.Label("Title", "Titlu", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.Title)
+    @Html.ValidationMessage("Title", null, new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Question", "Intrebare", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.Question)
+    @Html.ValidationMessage("Question", null, new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("a", "a)", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.a)
+    @Html.ValidationMessage("a", null, new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("b", "b)", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.b)
+    @Html.ValidationMessage("b", null, new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("c", "c)", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.c)
+    @Html.ValidationMessage("c", null, new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("d", "d)", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.d)
+    @Html.ValidationMessage("d", null, new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Correct", "Raspunsul correct:", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(m => m.Correct)
+    @Html.ValidationMessage("Correct", null, new { @class = "text-danger" })
+    <br />
+
+    @Html.HiddenFor(m => m.Answer)
+    @Html.HiddenFor(m => m.ProblemId)
+
+    <label>Selectati materia</label>
+    @Html.DropDownListFor(m => m.SubjectId, new SelectList(Model.Subjects, "Value", "Text"),
+    "Selectati materia", new { @class = "form-control" })
+    @Html.ValidationMessage("SubjectId", null, new { @class = "text-danger" })
+    <br />
+    <br />
+    <br />
+
+    <button type="submit">Adaugă problema</button>
+}

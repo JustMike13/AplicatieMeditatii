@@ -8,21 +8,23 @@
     {
     <div>
         <h3>@course.Title</h3>
-        @foreach (var mat in ViewBag.materii)
+
+        @foreach (var mat in @ViewBag.materii)
         {
-            if (mat.Value == course.SubjectId)
-            {
-                <h5>@mat.Text</h5>
-            }
+            if (@mat.Value == @course.SubjectId.ToString())
+        {
+        <h5>@mat.Text</h5>
+        }
         }
         <a class="pull-left btn-sm btn btn-success" href="/Course/Show/@course.CourseId">Afiseaza</a>
-        <a class="pull-left btn-sm btn btn-open" href="/Course/Edit/@course.CourseId">Editeaza</a>
+        <a class="pull-left btn-sm btn btn-info" href="/Course/Edit/@course.CourseId">Editeaza</a>
+        
     </div>
-                <br/>
-                <hr/>
-                <br/>
-            }  
-}
+                    <br/>
+                    <hr/>
+                    <br/>
+                }
+    }
 
-@Html.ActionLink("Adauga o lectie noua", "AddCourse", "Course")
+    @Html.ActionLink("Adauga o lectie noua", "AddCourse", "Course")
 
